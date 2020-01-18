@@ -21,10 +21,21 @@ class App extends Component {
   //   });
 
   render() {
+    const imageFound = this.state.images.length;
+    let found;
+    if (imageFound !== 0) {
+      found = (
+        <h1 style={{ fontSize: "15px", color: "black" }}>
+          Found: {this.state.images.length} images
+        </h1>
+      );
+    } else {
+      found = null;
+    }
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        Found: {this.state.images.length} images
+        {found}
         <ImageList images={this.state.images} />
       </div>
     );
